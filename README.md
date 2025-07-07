@@ -22,7 +22,7 @@ cd OPNs
 ## Usage
 
 - ### OPNs Class(opns.py)
-The **OPN** class includes the definition of OPNs and their basic operations. It overrides the standard arithmetic operators to support custom rules.
+The **OPNs** class includes the definition of OPNs and their basic operations. It overrides the standard arithmetic operators to support custom rules.
 
 #### Basic OPNs Operations
 
