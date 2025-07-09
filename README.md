@@ -78,15 +78,26 @@ $$\alpha\cdot\beta = (-\mu_{\alpha}\nu_{\beta}-\nu_{\alpha}\mu_{\beta},-\mu_{\al
 The exponentiation of an OPNs $\alpha$ raised to the power of $n$ is defined as:
 $$\alpha^{n} = \left (\frac{(-1)^{n+1}}{2} \left ( \mu_{\alpha} + \nu_{\alpha} \right )^n + \frac{1}{2}\left ( \mu_{\alpha} - \nu_{\alpha} \right )^n, \frac{(-1)^{n+1}}{2} \left ( \mu_{\alpha} + \nu_{\alpha} \right )^n - \frac{1}{2}\left ( \mu_{\alpha} - \nu_{\alpha} \right )^n  \right )$$
 
-For more detailed OPNs calculation rules, please refer to the paper "Ordered Pair of Normalized Real Numbers" by Lei Zhou.
-
+## Reference and Background
+﻿
+For detailed definitions and calculation rules of Ordered Pair of Normalized Real Numbers (OPNs), please refer to the foundational paper:
+﻿
+Zhou, Lei. *"Ordered pair of normalized real numbers."* Information Sciences 538 (2020): 290–313.
+[https://doi.org/10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
+﻿
+## Recent Updates
+﻿
+We have updated this repository to include the core implementation of the OPNs matrix class—`opns_numpy`—which provides Numpy-like functionality tailored for OPNs data structures and arithmetic. This module enables convenient construction, manipulation, and computation of OPNs matrices, and is designed to support further development in machine learning and numerical applications under the OPNs framework.
+﻿
 ## Future Updates
-
-We are committed to better extending the OPNs library to machine learning development. We are continuously working on improving the OPNs Library. Upcoming features include:
-
-- Matrix class for OPNs
-- A Numpy-like library for OPNs
-Stay tuned for these updates!
+﻿
+We are actively maintaining and improving the `opns_numpy` library. Future plans include:
+﻿
+* Enhanced matrix operations and broadcasting support
+* automatic optimization of model parameters
+* Optimized performance for large-scale OPNs computations
+﻿
+More updates will be provided in the future, including additional OPNs algorithm models, and even a parallel version that can run on GPUs.
 
 
 
