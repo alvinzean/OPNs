@@ -7,6 +7,7 @@ from memory_profiler import memory_usage
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.datasets import load_wine, load_diabetes
 
 import opns_pack.opns_np as op
 import opns_pack.custom_gen_pairs as cgp
