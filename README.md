@@ -96,6 +96,7 @@ We are actively maintaining and improving the `opns_numpy` library. Future plans
 * Enhanced matrix operations and broadcasting support
 * automatic optimization of model parameters
 * Optimized performance for large-scale OPNs computations
+
 ﻿
 More updates will be provided in the future, including additional OPNs algorithm models, and even a parallel version that can run on GPUs.
 
