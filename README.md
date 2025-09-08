@@ -76,7 +76,7 @@ arr = m.to_numpy()
 | 矩阵乘法  | `C = A @ B`                                                       | 从标准矩阵到点积都支持  |
 | 比较操作  | `mask = m > n`                                                    | 支持广播比较与容差机制  |
 | 累积与检索 | `s = OPNTensorMatrix.sum(m)`<br>`idx = OPNTensorMatrix.argmax(m)` | 元素求和与最大值索引   |
-内部结构一览
+
 ---
 
 ## 主要方法/属性说明：
