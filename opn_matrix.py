@@ -1,4 +1,6 @@
-from src.gpuopns.opn import OPNTensor
+from torch.cuda import device
+
+from .opn import OPNTensor
 import numpy as np
 import torch
 
@@ -24,6 +26,63 @@ class OPNTensorMatrix:
     def set_inf_threshold(cls, threshold):
         """设置全局零值比较阈值"""
         cls.__inf_threshold__ = threshold
+
+    @classmethod
+    def unique(cls, opn_matrix):
+        """
+        对形状为(n, 2)的torch矩阵进行unique操作
+        Args:
+            opn_matrix: torch.Tensor, 形状为(n, 2)的矩阵
+        Returns:
+            unique_tensor: 去重后的矩阵
+            inverse_indices: 原始矩阵中每个元素在去重后矩阵中的索引
+        """
+        assert opn_matrix.data.ndim == 2 and opn_matrix.data.shape[-1] == 2, "输入必须是(n,2)形状"
+        return cls._unique_gpu_safe(opn_matrix)
+
+    @classmethod
+    def bincount(cls, opn_matrix):
+        """
+        统计每个唯一元素出现的次数
+        Args:
+            opn_matrix: OPNTensorMatrix, 形状为(n, 2)的矩阵
+        Returns:
+            unique_tensor: 去重后的矩阵
+            counts: 每个唯一元素出现的次数
+        """
+        assert opn_matrix.data.ndim == 2 and opn_matrix.data.shape[-1] == 2, "输入必须是(n,2)形状"
+        return cls._bincount_gpu_safe(opn_matrix)
+
+    @classmethod
+    def _bincount_gpu_safe(cls, opn_matrix):
+        unique_tensor, inverse_indices = cls._unique_gpu_safe(opn_matrix)
+        counts = torch.bincount(inverse_indices)
+        return unique_tensor, counts
+
+    @classmethod
+    def _unique_gpu_safe(cls, opn_matrix):
+        """安全的去重方法"""
+        seen = {}
+        unique_list = []
+        inverse_indices = []
+        for i, row in enumerate(opn_matrix.data):
+            # 将tensor转换为可哈希的元组
+            row_tuple = tuple(row.tolist())
+            if row_tuple not in seen:
+                seen[row_tuple] = len(unique_list)
+                unique_list.append(row)
+            inverse_indices.append(seen[row_tuple])
+        unique_tensor = torch.stack(unique_list)
+        inverse_indices = torch.tensor(inverse_indices, device=opn_matrix.device)
+        return OPNTensorMatrix(unique_tensor,device=opn_matrix.device), inverse_indices
+
+    @classmethod
+    def cat(cls, opn_matrix_list):
+        for opn_matrix in opn_matrix_list:
+            if not isinstance(opn_matrix, OPNTensorMatrix):
+                raise TypeError(f"不支持的opn_matrix类型: {type(opn_matrix)}")
+        return OPNTensorMatrix(torch.cat([opn_matrix.data for opn_matrix in opn_matrix_list]),device=opn_matrix_list[0].device)
+
 
     @classmethod
     def zero(cls, shape=(), device="cpu"):
@@ -198,6 +257,14 @@ class OPNTensorMatrix:
         """维度数量（不包括OPN维度）"""
         return self.data.ndim - 1
 
+    @property
+    def is_cuda(self):
+        return self.device.lower() == 'cuda'
+
+    @property
+    def dtype(self):
+        return self.data.dtype
+
     def copy(self):
         return self.__copy__()
 
@@ -216,6 +283,9 @@ class OPNTensorMatrix:
                 f"  shape={self.shape},\n"
                 f"  dtype={self.data.dtype},\n"
                 f"  data=\n{self.data}\n)")
+
+    def __format__(self, format_spec):
+        return f"{self.data}"
 
     def __getitem__(self, idx):
         if not isinstance(idx, tuple):

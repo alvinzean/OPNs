@@ -1,6 +1,6 @@
-import torch
-import warnings
 import numpy as np
+import warnings
+import torch
 
 def check_and_convert(value):
     if isinstance(value, torch.Tensor):
