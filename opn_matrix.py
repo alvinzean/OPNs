@@ -1,6 +1,4 @@
-from torch.cuda import device
-
-from .opn import OPNTensor
+from opn import OPNTensor
 import numpy as np
 import torch
 
@@ -83,7 +81,6 @@ class OPNTensorMatrix:
                 raise TypeError(f"不支持的opn_matrix类型: {type(opn_matrix)}")
         return OPNTensorMatrix(torch.cat([opn_matrix.data for opn_matrix in opn_matrix_list]),device=opn_matrix_list[0].device)
 
-
     @classmethod
     def zero(cls, shape=(), device="cpu"):
         """创建全零OPN张量矩阵"""
@@ -112,7 +109,7 @@ class OPNTensorMatrix:
         return cls.argsort(opn_matrix)[0]
 
     @classmethod
-    def sum(cls, opn_matrix, dim=None, keepdim=False):
+    def sum(cls, opn_matrix, dim=None, keepdim=True):
         if dim is None:
             sum_a = torch.sum(opn_matrix.data[..., 0])
             sum_b = torch.sum(opn_matrix.data[..., 1])
@@ -193,6 +190,20 @@ class OPNTensorMatrix:
         e = torch.where(d < min_v, min_v, d)
         safe_c = torch.where(c == 0, torch.ones_like(c), c)
         return opn_matrix * e.unsqueeze(-1) / safe_c.unsqueeze(-1)
+
+    @classmethod
+    def distance(cls, A, B):
+        """
+        计算点簇A到点簇B的每个点的距离
+        A : (n)
+        B : (m)
+        return D : (n * m) 其中 dij = d(ai,bj)
+        """
+        assert A.data.ndim == 2 and B.data.ndim == 2, f"A:{A.data.ndim},B:{B.data.ndim},输入必须是(n,2)形状"
+        D = cls.zero((len(A),len(B)),device = A.device)
+        for i in range(len(A)):
+            D[i] = abs(A[i] - B)
+        return D
 
     @classmethod
     def inf(cls, shape=(), device="cpu"):
@@ -344,7 +355,10 @@ class OPNTensorMatrix:
         """矩阵乘法或标量乘法"""
         if isinstance(other, (int, float, torch.Tensor, np.number)):
             # 标量乘法
-            return OPNTensorMatrix(self.data * other, device=self.device)
+            try:
+                return OPNTensorMatrix(self.data * other, device=self.device)
+            except Exception as e:
+                raise TypeError(f"{e}\nself.data:{self.data}\nother:{other}")
         elif isinstance(other, OPNTensorMatrix):
             # OPN乘法: (a,b)*(c,d) = (-ad-bc, -ac-bd)
             a, b = self.data[..., 0], self.data[..., 1]
@@ -792,10 +806,10 @@ class OPNTensorMatrix:
         return self.ge(other)
 
     def __abs__(self):
-        return self * torch.where(self < OPNTensorMatrix.zero(1,device=self.device), -1, 1)
+        return self * torch.where(self < OPNTensorMatrix.zero(1,device=self.device), -1, 1).unsqueeze(1)
 
     def abs(self):
-        return self * torch.where(self < OPNTensorMatrix.zero(1,device=self.device), -1, 1)
+        return self * torch.where(self < OPNTensorMatrix.zero(1,device=self.device), -1, 1).unsqueeze(1)
 
     def dot(self, other):
         """矩阵乘法或标量乘法"""
