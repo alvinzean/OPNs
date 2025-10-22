@@ -1,0 +1,63 @@
+{
+    "abalone": {
+        "alpha": 0.001,
+        "nth_power": 3,
+        "tri": 0,
+        "test_size": [0.2, 0.3]
+    },
+    "bike": {
+        "alpha": 0.001,
+        "nth_power": 3,
+        "tri": 1,
+        "test_size": [0.2, 0.3]
+    },
+    "boston": {
+        "alpha": 0.001,
+        "nth_power": 4,
+        "tri": 2,
+        "test_size": [0.2, 0.3]
+    },
+    "concrete": {
+        "alpha": 0.0001,
+        "nth_power": 4,
+        "tri": 1,
+        "test_size": [0.2, 0.3]
+    },
+
+    "energy_cooling": {
+        "alpha": 0.001,
+        "nth_power": 4,
+        "tri": 0,
+        "test_size": [0.2, 0.3]
+    },
+    "energy_heating": {
+        "alpha": 0.001,
+        "nth_power": 4,
+        "tri": 0,
+        "test_size": [0.2, 0.3]
+    },
+    "diabetes": {
+        "alpha": 0.01,
+        "nth_power": 5,
+        "tri": 1,
+        "test_size": [0.3, 0.2]
+    },
+    "folds": {
+        "alpha": 0.001,
+        "nth_power": 4,
+        "tri": 0,
+        "test_size": [0.2, 0.3]
+    },
+    "wine": {
+        "alpha": 0.01,
+        "nth_power": 3,
+        "tri": 1,
+        "test_size": [0.2, 0.3]
+    },
+    "yacht": {
+        "alpha": 0.001,
+        "nth_power": 7,
+        "tri": 1,
+        "test_size": [0.2, 0.3]
+    }
+}

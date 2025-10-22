@@ -1,0 +1,13 @@
+{
+    "default": {
+        "alpha": 0.001,
+        "nth_power": 3,
+        "tri": 1,
+        "test_size": [0.2, 0.3]
+    },
+    "__comment": {
+        "alpha": "The larger the value, the fewer pairs are retained. Suggested values: [0.01, 0.005, 0.001, 0.0005, 0.0001]",
+        "nth_power": "Higher-order power terms. Suggested values: [2, 3, 4, 5]",
+        "tri": "Trigonometric function terms. Suggested values: [0, 1, 2, 3]"
+    }
+}
