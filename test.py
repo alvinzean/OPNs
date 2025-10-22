@@ -1,4 +1,6 @@
 import time
+import json
+import argparse
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -61,52 +63,17 @@ def find_best_model_by_r2(linear_metrics, lasso_metrics):
     }
 
 
-def run_experiment(alpha, nth_power, tri=0, random_state=None):
+def run_experiment(alpha, nth_power, tri=0, test_size=[], dataset_name='', random_state=None):
     """Execute a single experiment workflow, return a dictionary of evaluation metrics"""
+    assert dataset_name != '', 'Please check dataset_name.'
     global FEATURE
     try:
         # ============= Load Data =============
-        # Each dataset requires corresponding parameters
-        # energy
-        energy_df = pd.read_csv('dataset/energy_efficiency_data.csv')
-        feature_names = energy_df.columns[:-2].tolist()
-        X = energy_df.iloc[:, :-2].values
-        y = energy_df.iloc[:, -2].values.reshape(-1, 1)
-
-        # folds
-        # energy_df = pd.read_csv('dataset/Folds5x2_pp.csv')
-        # energy_df = energy_df.sample(frac=0.1, random_state=42)
-        # feature_names = energy_df.columns[:-1].tolist()
-        # # Split dataset into features and target variables
-        # X = energy_df.iloc[:, :-1].values
-        # y = energy_df.iloc[:, -1].values.reshape(-1, 1)  # Reshape target variable to 2D for normalization
-
-        # bike
-        # dataset_df = pd.read_csv('dataset/bike.csv')
-        # feature_names = dataset_df.columns[:-1].tolist()
-        # X = dataset_df.iloc[:, :-1].values  # Features
-        # y = dataset_df.iloc[:, -1].values.reshape(-1, 1)  # Reshape target variable to 2D for normalization
-
-        # airfoil
-        # dataset_df = pd.read_csv('dataset/airfoil_self_noise.dat', delim_whitespace=True, header=None)
-        # dataset_df.columns = ['A', 'B', 'C', 'D', 'E', 'Y']  # Add new column names
-        # feature_names = dataset_df.columns[:-1]
-        # X = dataset_df.iloc[:, :-1].values  # Features
-        # y = dataset_df.iloc[:, -1].values.reshape(-1, 1)  # Reshape target variable to 2D for normalization
-
-        # wine
-        # dataset = load_wine()
-        # X_df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
-        # feature_names = dataset.feature_names  # or list(X_df.columns)
-        # X = X_df.values  # already excludes target column
-        # y = dataset.target.reshape(-1, 1)
-
-        # diabetes
-        # dataset = load_diabetes()
-        # X_df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
-        # feature_names = dataset.feature_names  # or list(X_df.columns)
-        # X = X_df.values  # already excludes target column
-        # y = dataset.target.reshape(-1, 1)
+        from utils.functions import load_data
+        if dataset_name == 'yacht':
+            feature_names, X, y = load_data(dataset_name, file_type='data')
+        else:
+            feature_names, X, y = load_data(dataset_name, file_type='csv')
 
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
@@ -121,12 +88,12 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
                 self.feature_names = feature_names
 
         dataset = TransDataset(X_scaled, y, feature_names)
-
+        
         # ============= Feature Engineering =============
         X_df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
         original_feature = X_df.columns.values
         X_df['zero'] = 0
-
+        
         # Generate feature combinations 
         feature_to_pair_1 = np.array(cgp.linear_pair(original_feature))
         feature_to_pair_2 = np.array(cgp.all_pair(original_feature) + cgp.linear_pair(original_feature))
@@ -144,7 +111,7 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
 
         # ============= Data split =============
         X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.3, random_state=random_state
+            X, y, test_size=test_size[0], random_state=random_state
         )
 
         # ============= OPNs Data Standard =============
@@ -183,7 +150,7 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
         for name, coef in zip(feature_names, coefficients):
             if coef != OPNs(0, 0):
                 selected_features.append((name, coef))
-
+        
         # ============= Linear model validation =============
         def split_list_by_zero(input_list, n):
             split_indices = []
@@ -208,8 +175,7 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
             max_possible_n = len(split_indices) + 1
 
             if n > max_possible_n:  
-                print(f"Cannot split into {n} lists, maximum possible is {max_possible_n}")
-                # TODO: Need iterative updates in the future to improve functionality
+                print(f"\nCannot split into {n} lists, maximum possible is {max_possible_n}")
                 return []
 
             # Generate split points
@@ -231,10 +197,6 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
         ndiv = nth_power if tri == 0 else nth_power + 1
         feature_list = split_list_by_zero(selected_features_name, ndiv)
         FEATURE.append(feature_list)
-        # print(feature_list[0])
-        # print('-----------------------------')
-        # print(feature_list)
-        # exit()
 
         # Feature transformation
         X_linear = cgp.data_convert(X_df, feature_list[0])
@@ -248,7 +210,7 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
         # Linear model training
         X_linear_scaled = scaler.fit_transform(X_linear)
         X_train_linear, X_test_linear, y_train_linear, y_test_linear = train_test_split(
-            X_linear_scaled, y, test_size=0.3, random_state=random_state
+            X_linear_scaled, y, test_size=test_size[0], random_state=random_state
         )
         linear = LinearRegressionGradientDescent()
         linear.fit(X_train_linear, y_train_linear)
@@ -274,12 +236,11 @@ def run_experiment(alpha, nth_power, tri=0, random_state=None):
         return None
 
 
-def analyze_memory(params):
+def analyze_memory(dataset_name, params):
     """Execute memory analysis and plot chart"""
     try:
-        # Memory measurement
         raw_data, exec_time = memory_usage(
-            (run_experiment, (), params),
+            (run_experiment, (), {'dataset_name': dataset_name, **params}),
             interval=0.1,
             timestamps=True,
             retval=True,
@@ -333,65 +294,43 @@ def calculate_mean_std(model_metrics):
 def get_index(model_metrics, identity, best_suffix):
     global INDEX
     global FEATURE
-    # print(f"FEATURE: {FEATURE}")
-    # print(f"INDEX: {INDEX}")
-    # print(f"identity: {identity}")
-    # print(f"best_suffix: {best_suffix}")
-    # print(f"model_metrics: {model_metrics}")
     max_value = max(model_metrics[identity][f'r2_{best_suffix}'])
-    # print(f"max_value: {max_value}")
     max_value_idx = model_metrics[identity][f'r2_{best_suffix}'].index(max_value)
     INDEX = max_value_idx
     
 if __name__ == "__main__":
-    # Parameter configuration
-    params = {
-        # Dataset: energy
-        # Each dataset requires corresponding parameters
-        'alpha': 0.001,
-        'nth_power': 4,
-        'tri': 1,
-        # 'random_state': None  # Memory analysis uses default random state
-        
-        # energy_efficiency_data_heating
-        # 'alpha': 0.001,
-        # 'nth_power': 3,
-        # 'tri': 1,
+    import argparse
+    import warnings
+    import importlib.resources as pkg_resources
+    import utils
 
-        # energy_efficiency_data_cooling
-        # 'alpha': 0.001,
-        # 'nth_power': 3,
-        # 'tri': 1,
+    warnings.filterwarnings("ignore")
+    parser = argparse.ArgumentParser()
 
-        # Folds5x2_pp
-        # 'alpha': 0.001,
-        # 'nth_power': 3,
-        # 'tri': 0,
+    with pkg_resources.files(utils).joinpath("configs/config.json").open("r", encoding="utf-8") as f:
+        config_args = json.load(f)
+    with pkg_resources.files(utils).joinpath("configs/default_params.json").open("r", encoding="utf-8") as f:
+        default_args = json.load(f)
+    with pkg_resources.files(utils).joinpath("configs/test_data_params.json").open("r", encoding="utf-8") as f:
+        test_args = json.load(f)
+    
+    parser.add_argument('--dataset', type=str, default='default', choices=['abalone', 'bike', 'boston', 'concrete',
+                                                                      'diabetes', 'energy_cooling', 'energy_heating',
+                                                                      'folds', 'wine', 'yacht', 'default'], 
+                                                                      help='Name of dataset. You can add your personal dataset to choice list.')
+    parser.add_argument('--memory', action='store_true', help='Enable memory analysis (default: False)')
 
-        # bike
-        # 'alpha': 0.001,
-        # 'nth_power': 3,
-        # 'tri': 1,
+    args = parser.parse_args()
 
-        # yacht
-        # 'alpha': 0.005,
-        # 'nth_power': 7,
-        # 'tri': 1,
-
-        # wine
-        # 'alpha': 0.01,
-        # 'nth_power': 3,
-        # 'tri': 1,
-
-        # diabetes
-        # 'alpha': 0.01,
-        # 'nth_power': 5,
-        # 'tri': 1,
-    }
-
+    if args.dataset in test_args.keys():
+        params = test_args[args.dataset]
+        print(f'Use pre-setting parameters about {args.dataset}.')
+    else:
+        params = default_args['default']
+        print(f'Use default parameters.')
     
     # ============= Multiple experiment runs =============
-    n_runs = 10
+    n_runs = config_args['n_runs']
     results = []
     time_result = []
 
@@ -401,12 +340,10 @@ if __name__ == "__main__":
     print(start_text.center(100, '='))
     for seed in tqdm(range(n_runs), desc="Running single experiments"):
         start_time = time.time()
-        result = run_experiment(**params, random_state=seed)
+        result = run_experiment(**params, dataset_name=args.dataset, random_state=seed)
         if result:
             results.append(result)
             time_result.append(time.time() - start_time)
-        # else:
-        #     print(f"Run {seed + 1}/{n_runs} failed")
 
     # ============= Statistical results =============
     if results:
@@ -423,18 +360,17 @@ if __name__ == "__main__":
                     metrics[model][k].append(v)
         
         identity, best_suffix, best_result = calculate_mean_std(metrics)
-        get_index(metrics, identity, best_suffix)  # get max index
+        get_index(metrics, identity, best_suffix)
 
-
-        
-        print()
-        features_text = f"Selected Features"
-        print(features_text.center(50, '='))
-        for i, features in enumerate(FEATURE[INDEX]):
-            if i != len(FEATURE[INDEX]) - 1:
-                print(f"Feature of {i + 1}th power: \n{FEATURE[INDEX][i]}\n")
-            else:
-                print(f"Feature of tri power: \n{FEATURE[INDEX][i]}")
+        if len(FEATURE[INDEX]) != 0:
+            print()
+            features_text = f"Selected Features"
+            print(features_text.center(50, '='))
+            for i, features in enumerate(FEATURE[INDEX]):
+                if i != len(FEATURE[INDEX]) - 1:
+                    print(f"Feature of {i + 1}th power: \n{FEATURE[INDEX][i]}\n")
+                else:
+                    print(f"Feature of tri power: \n{FEATURE[INDEX][i]}")
 
         print()
         perference_text = f"Performance (Mean ± Std)"
@@ -442,25 +378,14 @@ if __name__ == "__main__":
         for k, v in best_result.items():
             print(f"{k:8}: {v}")
         print(f"{'time':8}: {np.mean(time_result):.4f} ± {np.std(time_result):.4f}")
-        # print(f"{FEATURE[INDEX]}")
-
-
-        # Calculate statistics
-        # def print_stats(data, title):
-        #     print(f"\n{title} Performance (Mean ± Std):")
-        #     for metric in data:
-        #         mean = np.mean(data[metric])
-        #         std = np.std(data[metric])
-        #         print(f"{metric:8}: {mean:.4f} ± {std:.4f}")
-        # # TODO: FIXME
-        # print_stats(metrics['lasso'], 'Lasso')
-        # print_stats(metrics['linear'], 'Linear Regression')
     else:
         print("\nAll experiments failed!")
 
     # ============= Memory analysis =============
-    print()
-    memory_text = f"Running memory analysis"
-    print(memory_text.center(50, '='))
-    analyze_memory(params)
+    if args.memory:
+        print()
+        memory_text = f"Running memory analysis"
+        print(memory_text.center(50, '='))
+        analyze_memory(args.dataset, params)
+    
     print(end_text.center(80, '='))
