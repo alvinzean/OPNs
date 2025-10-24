@@ -14,8 +14,8 @@ from sklearn.datasets import load_wine, load_diabetes
 import opns_pack.opns_np as op
 import opns_pack.custom_gen_pairs as cgp
 from opns_pack.opns import OPNs
-from opns_sklearn.preprocessing import OPNsStandardScaler
-from opns_sklearn.linear_model import Lasso, LinearRegression, LinearRegressionGradientDescent
+from opns_module.preprocessing import OPNsStandardScaler
+from opns_module.linear_model import Lasso, LinearRegression, LinearRegressionGradientDescent
 
 # Global variables
 FEATURE = []
