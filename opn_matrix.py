@@ -486,6 +486,48 @@ class OPNTensorMatrix:
 
         return OPNTensorMatrix(result, device=self.device)
 
+    def __truediv__(self, other):
+        """OPN除法运算: self / other
+
+        支持与标量或另一个OPNTensorMatrix相除
+        """
+        if isinstance(other, (int, float, torch.Tensor, np.number)):
+            # 标量除法: (a,b) / k = (a/k, b/k)
+            try:
+                return OPNTensorMatrix(self.data / other, device=self.device)
+            except Exception as e:
+                raise TypeError(f"{e}\nself.data:{self.data}\nother:{other}")
+
+        elif isinstance(other, OPNTensorMatrix):
+            # OPN除法: (a,b) / (c,d) = (a,b) * (c,d)的逆
+            return self * other.inverse()
+
+        else:
+            raise TypeError(f"无法将OPNTensorMatrix除以 {type(other)}")
+
+    def __rtruediv__(self, other):
+        """OPN被除运算: other / self
+
+        支持标量被OPNTensorMatrix除
+        """
+        if isinstance(other, (int, float, torch.Tensor, np.number)):
+            # 标量被除: k / (a,b) = k * (a,b)的逆
+            try:
+                # 将标量转换为OPN形式 (k,0)
+                other_opn = OPNTensorMatrix(
+                    torch.stack([
+                        torch.full_like(self.data[..., 0], other),
+                        torch.zeros_like(self.data[..., 0])
+                    ], dim=-1),
+                    device=self.device
+                )
+                return other_opn * self.inverse()
+            except Exception as e:
+                raise TypeError(f"{e}\nother:{other}\nself.data:{self.data}")
+
+        else:
+            raise TypeError(f"无法用 {type(other)} 除以 OPNTensorMatrix")
+
     def transpose(self, dim0=-2, dim1=-1):
         """转置矩阵维度"""
         # 转置矩阵维度
