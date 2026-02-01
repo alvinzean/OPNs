@@ -1,14 +1,37 @@
-# OPNs Library
+# OPNs: Algebraic Representation Learning Library
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 
 ## Overview
 
-The OPNs Library is a Python package that defines a special numerical domain called OPNs (Ordered pair of normalized real numbers). This library implements custom arithmetic operations, including addition, subtraction, multiplication, division, exponentiation, root extraction, and trigonometric functions, all following the unique rules of the OPNs domain.
+**OPNs (Ordered Pair of Normalized Real Numbers)** is a novel algebraic framework designed to explicitly model non-linear interactions and intrinsic data geometry. 
+
+This library provides a **NumPy-based mathematical infrastructure** developed from scratch. It implements the core algebraic operations, matrix computations, and generalized metric spaces defined in the OPNs theory, powering machine learning algorithms without relying on high-level black-box APIs.
+
+---
+
+## 📚 Representative Research & Publications
+
+This repository is the official implementation for the following papers. You can download the manuscripts below:
+
+### 1. [IEEE TAI 2025] Generalized Metric Space for Classification
+**Title:** K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers  
+**Authors:** Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, Lei Zhou* **Journal:** *IEEE Transactions on Artificial Intelligence (TAI)* **Status:** Accepted (May 2025)  
+🔗 **[Read Paper (IEEE Xplore)](https://doi.org/10.1109/TAI.2025.3566925)**
+
+### 2. [IEEE TNNLS] Algebraic Framework for Regression
+**Title:** Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers  
+**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision
+📄 **[Download Manuscript (PDF)](./OPNs_LR.pdf)**
+
+---
 
 ## Features
 
-- Custom OPNs arithmetic operations
-- OPNs class
-- OPNs-specific math functions
+- **From Scratch Implementation:** Built strictly on Python and NumPy to ensure mathematical transparency.
+- **Custom Algebra:** Implements OPNs-specific addition, multiplication, and matrix operations via operator overloading.
+- **Generalized Metric:** Provides non-Euclidean distance calculations for measuring non-linear similarities.
 
 ## Installation
 
@@ -42,7 +65,7 @@ print(a < b)  # OPNs less than
 ```
 
 - ### OPNs Math Functions(opns_math.py)
-The **opns_math** module provides various mathematical functions for OPNs, similar to Python's math library. It includes functions for logarithms, trigonometric functions, and more (will be continuously updated).
+The opns_math module provides various mathematical functions for OPNs, similar to Python's math library.
 
 #### Example Usage
 
@@ -54,7 +77,6 @@ a = OPNs(3, 4)
 
 print(opns_math.log(a))     # OPNs logarithm
 print(opns_math.sin(a))     # OPNs sine
-print(opns_math.asin(a))    # OPNs arcsine
 print(opns_math.exp(a))     # OPNs exponential
 ```
 
@@ -91,14 +113,11 @@ We have updated this repository to include the core implementation of the OPNs m
 ﻿
 ## Future Updates
 
-We are actively maintaining and improving the `opns_numpy` library. Future plans include:
-﻿
-* Enhanced matrix operations and broadcasting support
-* automatic optimization of model parameters
-* Optimized performance for large-scale OPNs computations
+We are actively working on:
 
-
-More updates will be provided in the future, including additional OPNs algorithm models, and even a parallel version that can run on GPUs.
+* Integrating Automatic Differentiation (Autograd) for OPNs algebraic structures.
+* Developing OPNs-Neural Networks layers compatible with PyTorch.
+* Optimizing performance for large-scale matrix computations on GPUs.
 
 ## How to use it
 
