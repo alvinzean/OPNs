@@ -23,7 +23,7 @@ This repository is the official implementation for the following papers. You can
 ### 2. [IEEE TNNLS] Algebraic Framework for Regression
 **Title:** Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers  
 **Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision
-📄 **[Download Manuscript (PDF)](./OPNs_LR.pdf)**
+📄 **[Download Manuscript (PDF)](./OPNs-LR.pdf)**
 
 ---
 
