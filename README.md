@@ -13,18 +13,32 @@ This library provides a **NumPy-based mathematical infrastructure** developed fr
 
 ## 📚 Representative Research & Publications
 
-This repository is the official implementation for the following papers. You can download the manuscripts below:
+This repository serves as the foundational library for the OPNs framework. It has powered the following research:
 
-### 1. [IEEE TAI 2025] Generalized Metric Space for Classification
+### 🌟 Primary Works (Official Implementation)
+
+#### 1. [IEEE TAI 2025] Generalized Metric Space for Classification
 **Title:** K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers  
 **Authors:** Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, Lei Zhou* **Journal:** *IEEE Transactions on Artificial Intelligence (TAI)* **Status:** Accepted (May 2025)  
 🔗 **[Read Paper (IEEE Xplore)](https://doi.org/10.1109/TAI.2025.3566925)**
 
-### 2. [IEEE TNNLS] Algebraic Framework for Regression
+#### 2. [IEEE TNNLS] Algebraic Framework for Regression
 **Title:** Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers  
-**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision
+**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision (Expected 2026)  
 📄 **[Download Manuscript (PDF)](./OPNs-LR.pdf)**
 
+---
+
+### 🤝 Collaborative Works & Applications
+*This library also supports the following studies where OPNs was applied to broader pattern recognition and regression tasks:*
+
+* **[Applied Intelligence]** Ming Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
+    *"Generalized-Metric-Based Pattern Recognition Using Ordered Pair of Normalized Real Numbers"*. (2025).  
+    🔗 **[DOI: 10.1080/08839514.2025.2590815](https://doi.org/10.1080/08839514.2025.2590815)**
+
+* **[J. Supercomputing]** Yonglin Huang, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
+    *"Stepwise regression algorithm based on the ordered pair of normalized real numbers framework"*. (2025).  
+    🔗 **[DOI: 10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)**
 ---
 
 ## Features
