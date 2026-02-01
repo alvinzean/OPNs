@@ -24,7 +24,7 @@ This repository serves as the foundational library for the OPNs framework. It ha
 
 #### 2. [IEEE TNNLS] Algebraic Framework for Regression
 **Title:** Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers  
-**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision (Expected 2026)  
+**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision
 📄 **[Download Manuscript (PDF)](./OPNs-LR.pdf)**
 
 ---
