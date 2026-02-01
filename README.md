@@ -109,7 +109,7 @@ Zhou, Lei. *"Ordered pair of normalized real numbers."* Information Sciences 538
 ﻿
 ## Recent Updates
 
-We have updated this repository to include the core implementation of the OPNs matrix class—`opns_numpy`—which provides Numpy-like functionality tailored for OPNs data structures and arithmetic. This module enables convenient construction, manipulation, and computation of OPNs matrices, and is designed to support further development in machine learning and numerical applications under the OPNs framework.
+We have updated this repository to include the core implementation of the OPNs matrix class—`opns_np`—which provides Numpy-like functionality tailored for OPNs data structures and arithmetic. This module enables convenient construction, manipulation, and computation of OPNs matrices, and is designed to support further development in machine learning and numerical applications under the OPNs framework.
 ﻿
 ## Future Updates
 
