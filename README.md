@@ -32,7 +32,7 @@ This repository serves as the foundational library for the OPNs framework. It ha
 ### 🤝 Collaborative Works & Applications
 *This library also supports the following studies where OPNs was applied to broader pattern recognition and regression tasks:*
 
-* **[Applied Intelligence]** Meijun Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
+* **[Applied Artificial Intelligence]** Meijun Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
     *"Generalized-Metric-Based Pattern Recognition Using Ordered Pair of Normalized Real Numbers"*. (2025).  
     🔗 **[DOI: 10.1080/08839514.2025.2590815](https://doi.org/10.1080/08839514.2025.2590815)**
 
