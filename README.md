@@ -32,6 +32,10 @@ This repository serves as the foundational library for the OPNs framework. It ha
 ### 🤝 Collaborative Works & Applications
 *This library also supports the following studies where OPNs was applied to broader pattern recognition and regression tasks:*
 
+ * **[Pattern Recognition]** Ying Tang, Jia Guo, Yi Zheng, Hao Feng, Xiaoqin Pan, Lei Zhou*.  
+    *"K-means clustering with generalized metrics using Ordered Pair of Normalized real numbers"*. (2026).  
+    🔗 **[DOI: 10.1016/j.patcog.2026.114236](https://doi.org/10.1016/j.patcog.2026.114236)**
+
 * **[Applied Artificial Intelligence]** Meijun Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
     *"Generalized-Metric-Based Pattern Recognition Using Ordered Pair of Normalized Real Numbers"*. (2025).  
     🔗 **[DOI: 10.1080/08839514.2025.2590815](https://doi.org/10.1080/08839514.2025.2590815)**
