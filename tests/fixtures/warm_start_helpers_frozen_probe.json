@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "classification": {
+    "source_sha256": "6a9d75c58e5f4d260c32013eea1019b172176c2cbdb670eb5682e23908a7afbc",
+    "selected_functions": [
+      "_binary_staged_logits",
+      "build_model",
+      "checkpoint_grid",
+      "classification_scores",
+      "cumulative_sum",
+      "staged_probabilities",
+      "time_to_checkpoint"
+    ],
+    "function_ast_sha256": {
+      "_binary_staged_logits": "7919c2db23b98a4d4090085a5461aae986065e92e2d36b0cdf3e2defc397fd77",
+      "build_model": "6014cceef5d4575cd5900069ae1fd369b1eeeda3f481a7644babfb8830b9f14f",
+      "checkpoint_grid": "6b2c1abf6854c48a8ead039c31ea582820843c81b0b8650356b442652de3b697",
+      "classification_scores": "a6cce078f2d960322730df72d5ee202a5d9a5e7ad65eb26f34e2625f30100f83",
+      "cumulative_sum": "e7added87a085b654426c4349dd742edca2d4bbc66705744c2590d46125fb965",
+      "staged_probabilities": "6bd17e93d947de368fc817ac8f25c1b990f90e90d5222aee118c5d3cc29830a8",
+      "time_to_checkpoint": "b5836804fff27b41aa156b7891df5803c9bcf759f3d67c5dd0bba37bd4187f8f"
+    },
+    "literal_assignments": [],
+    "target_sha256": "9cc3ca98150f191523952d17058a8a02c00a281d56cde85daf0678c9dc1692a8"
+  },
+  "regression": {
+    "source_sha256": "7405b6df7bc0eb46a8b1a4da780cb7f42608ebb8f03fbfbc2e6613b46e31f53a",
+    "selected_functions": [
+      "build_model",
+      "checkpoint_grid",
+      "cumulative_count",
+      "regression_scores",
+      "staged_predictions",
+      "time_to_checkpoint"
+    ],
+    "function_ast_sha256": {
+      "build_model": "ce412bf7ac91db9b6a5fdaa44daf5b5333848f0da800f30b068c3205884e235e",
+      "checkpoint_grid": "20c5f4c078f32fe1592f84f0a55ca0b4a1db00a46ef212c9b1d6bed0d6db2731",
+      "cumulative_count": "a12f60cc429d08df8764e65b2a47d7b0f9103dca05c22522adee4f7787941edf",
+      "regression_scores": "a79b9d4fe31563493bd71792f18683ab52e9cc6fdab7d2f06a9c6c1db78d5c24",
+      "staged_predictions": "470762c40999d21de3b4fe46490266d1e904c6ac99d4951f765c5339d4fd7df1",
+      "time_to_checkpoint": "69de7d4c0f244e7cc6a3085c832a436b68363f1754dbf45bc310fe7a339c5f0e"
+    },
+    "literal_assignments": [],
+    "target_sha256": "305eb56f0aeff77ec0d2d79616b729dd7c99d8e2a354e080c3e012e610e33e5b"
+  }
+}
