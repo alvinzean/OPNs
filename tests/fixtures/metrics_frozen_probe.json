@@ -1,0 +1,248 @@
+{
+  "source": {
+    "frozen_metrics_sha256": "5ac7dab2cdff0826f243a964f59c7a4218103014b5a5555519ad82faab5938ae",
+    "candidate_metrics_sha256": "5ac7dab2cdff0826f243a964f59c7a4218103014b5a5555519ad82faab5938ae"
+  },
+  "behavior": {
+    "regression_metrics": {
+      "RMSE": 0.5709640969448079,
+      "MAE": 0.5,
+      "R2": 0.9890456989247312,
+      "MAPE": 12.625
+    },
+    "classification_binary": {
+      "Accuracy": 0.6666666666666666,
+      "Precision": 0.6666666666666666,
+      "Recall": 0.6666666666666666,
+      "F1": 0.6666666666666666,
+      "LogLoss": 0.4270827280834117,
+      "AUC": 0.888888888888889
+    },
+    "classification_multiclass": {
+      "Accuracy": 0.6666666666666666,
+      "Precision": 0.6666666666666666,
+      "Recall": 0.6666666666666666,
+      "F1": 0.6666666666666666,
+      "LogLoss": 0.5317147280027147,
+      "AUC": 0.9166666666666666
+    },
+    "summary_from_list": {
+      "columns": [
+        "dataset",
+        "method",
+        "param_max_depth",
+        "param_backend",
+        "RMSE_mean",
+        "RMSE_std",
+        "RMSE_fmt",
+        "MAE_mean",
+        "MAE_std",
+        "MAE_fmt",
+        "R2_mean",
+        "R2_std",
+        "R2_fmt",
+        "train_time_mean",
+        "train_time_std",
+        "train_time_fmt"
+      ],
+      "index": [
+        0,
+        1
+      ],
+      "records": [
+        {
+          "dataset": "d1",
+          "method": "M1",
+          "param_max_depth": 4,
+          "param_backend": "fast_exact",
+          "RMSE_mean": 1.1,
+          "RMSE_std": 0.14142135623730948,
+          "RMSE_fmt": "1.1000 ± 0.1414",
+          "MAE_mean": 0.8500000000000001,
+          "MAE_std": 0.07071067811865474,
+          "MAE_fmt": "0.8500 ± 0.0707",
+          "R2_mean": 0.725,
+          "R2_std": 0.03535533905932741,
+          "R2_fmt": "0.7250 ± 0.0354",
+          "train_time_mean": 11.0,
+          "train_time_std": 1.4142135623730951,
+          "train_time_fmt": "11.0000 ± 1.4142"
+        },
+        {
+          "dataset": "d1",
+          "method": "M2",
+          "param_max_depth": "5;6",
+          "param_backend": "ordered_exact",
+          "RMSE_mean": 1.0,
+          "RMSE_std": 0.14142135623730953,
+          "RMSE_fmt": "1.0000 ± 0.1414",
+          "MAE_mean": 0.725,
+          "MAE_std": 0.03535533905932741,
+          "MAE_fmt": "0.7250 ± 0.0354",
+          "R2_mean": 0.79,
+          "R2_std": 0.014142135623730963,
+          "R2_fmt": "0.7900 ± 0.0141",
+          "train_time_mean": 8.5,
+          "train_time_std": 0.7071067811865476,
+          "train_time_fmt": "8.5000 ± 0.7071"
+        }
+      ],
+      "dtypes": {
+        "dataset": "object",
+        "method": "object",
+        "param_max_depth": "object",
+        "param_backend": "object",
+        "RMSE_mean": "float64",
+        "RMSE_std": "float64",
+        "RMSE_fmt": "object",
+        "MAE_mean": "float64",
+        "MAE_std": "float64",
+        "MAE_fmt": "object",
+        "R2_mean": "float64",
+        "R2_std": "float64",
+        "R2_fmt": "object",
+        "train_time_mean": "float64",
+        "train_time_std": "float64",
+        "train_time_fmt": "object"
+      }
+    },
+    "summary_from_frame": {
+      "columns": [
+        "dataset",
+        "method",
+        "param_max_depth",
+        "param_backend",
+        "RMSE_mean",
+        "RMSE_std",
+        "RMSE_fmt",
+        "MAE_mean",
+        "MAE_std",
+        "MAE_fmt",
+        "R2_mean",
+        "R2_std",
+        "R2_fmt",
+        "train_time_mean",
+        "train_time_std",
+        "train_time_fmt"
+      ],
+      "index": [
+        0,
+        1
+      ],
+      "records": [
+        {
+          "dataset": "d1",
+          "method": "M1",
+          "param_max_depth": 4,
+          "param_backend": "fast_exact",
+          "RMSE_mean": 1.1,
+          "RMSE_std": 0.14142135623730948,
+          "RMSE_fmt": "1.1000 ± 0.1414",
+          "MAE_mean": 0.8500000000000001,
+          "MAE_std": 0.07071067811865474,
+          "MAE_fmt": "0.8500 ± 0.0707",
+          "R2_mean": 0.725,
+          "R2_std": 0.03535533905932741,
+          "R2_fmt": "0.7250 ± 0.0354",
+          "train_time_mean": 11.0,
+          "train_time_std": 1.4142135623730951,
+          "train_time_fmt": "11.0000 ± 1.4142"
+        },
+        {
+          "dataset": "d1",
+          "method": "M2",
+          "param_max_depth": "5;6",
+          "param_backend": "ordered_exact",
+          "RMSE_mean": 1.0,
+          "RMSE_std": 0.14142135623730953,
+          "RMSE_fmt": "1.0000 ± 0.1414",
+          "MAE_mean": 0.725,
+          "MAE_std": 0.03535533905932741,
+          "MAE_fmt": "0.7250 ± 0.0354",
+          "R2_mean": 0.79,
+          "R2_std": 0.014142135623730963,
+          "R2_fmt": "0.7900 ± 0.0141",
+          "train_time_mean": 8.5,
+          "train_time_std": 0.7071067811865476,
+          "train_time_fmt": "8.5000 ± 0.7071"
+        }
+      ],
+      "dtypes": {
+        "dataset": "object",
+        "method": "object",
+        "param_max_depth": "object",
+        "param_backend": "object",
+        "RMSE_mean": "float64",
+        "RMSE_std": "float64",
+        "RMSE_fmt": "object",
+        "MAE_mean": "float64",
+        "MAE_std": "float64",
+        "MAE_fmt": "object",
+        "R2_mean": "float64",
+        "R2_std": "float64",
+        "R2_fmt": "object",
+        "train_time_mean": "float64",
+        "train_time_std": "float64",
+        "train_time_fmt": "object"
+      }
+    },
+    "summary_empty": {
+      "columns": [],
+      "index": [],
+      "records": [],
+      "dtypes": {}
+    },
+    "summary_missing_group_error": {
+      "type": "KeyError",
+      "message": "\"Cannot summarize records because grouping columns are missing: ['dataset', 'method']. Available columns: ['RMSE']\""
+    },
+    "average_rank_lower": {
+      "columns": [
+        "method",
+        "rank"
+      ],
+      "index": [
+        0,
+        1
+      ],
+      "records": [
+        {
+          "method": "M1",
+          "rank": 1.5
+        },
+        {
+          "method": "M2",
+          "rank": 1.5
+        }
+      ],
+      "dtypes": {
+        "method": "object",
+        "rank": "float64"
+      }
+    },
+    "average_rank_higher": {
+      "columns": [
+        "method",
+        "rank"
+      ],
+      "index": [
+        0,
+        1
+      ],
+      "records": [
+        {
+          "method": "M1",
+          "rank": 1.5
+        },
+        {
+          "method": "M2",
+          "rank": 1.5
+        }
+      ],
+      "dtypes": {
+        "method": "object",
+        "rank": "float64"
+      }
+    }
+  }
+}
