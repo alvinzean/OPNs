@@ -1,0 +1,51 @@
+{
+  "frozen_sources": {
+    "classification_benchmark_sha256": "8be2f77744e10134ea94c0e48269024070ab44e3f8d74ae1536c4abdec2a5ddc",
+    "regression_benchmark_sha256": "8d8039229cbc4151e152c19cbaaaa4b84e57e2b7a08677d25e153f53e7d6b99b"
+  },
+  "classification_helper_ast_sha256": {
+    "package_version": "73124412d8a1458b58cdfbd80cca18103d2df7f630695f2c5b844ac5b3e44fcd",
+    "merge_nested_params": "dff3fad6c821aa19327be1fa3d0df88e2256517da73c4a4b2fc47dc4112e5fe8",
+    "method_available": "438c94b270ca42c2f32d2909f9b1f3e0c2327a7380d6b0e09325062bff25dfb7",
+    "build_model": "aa2e0e8fbbacddb3e7521427d1078be680e21f1b140cef0fa65111344178aef6",
+    "align_probabilities": "6aa46448dbac6505d1a54d4b4786fae2fdad4380ed5a22ea0b0ff064fefd53fc",
+    "classification_scores": "8052444b9b9789563b9d2af13563bb09f448fd27a352e61aa3f6b973f39433af",
+    "safe_pickle_size_mb": "80752b08b0d70f3194fad0875ec26fc7ebc3c5f383111023ecc2c9588be29004"
+  },
+  "regression_helper_ast_sha256": {
+    "package_version": "73124412d8a1458b58cdfbd80cca18103d2df7f630695f2c5b844ac5b3e44fcd",
+    "merge_nested_params": "ae0bb52ac94477bfe1ab22383beecdfda4b87fd4763461e284df854c693b8fe3",
+    "method_available": "911457a7e67d2bb099dd9de86b67ac0450aa999a798fb2fac79cc5f053be53a0",
+    "map_common_budget": "c3dce1fbcc4993b5055fb383d329a348d952158deae853c2f235fe4dc4b69a4e",
+    "build_external_model": "cec58259af09de3dcf0621852825fc4d2af6bb798656329cc367e954d3237e11",
+    "regression_scores": "1a0995eed3bc293e0f2b1e4bac01a49d92617aed81381811999d11b17ec6b648",
+    "safe_pickle_size_mb": "80752b08b0d70f3194fad0875ec26fc7ebc3c5f383111023ecc2c9588be29004"
+  },
+  "formal_protocol": {
+    "random_state": 161803,
+    "n_splits": 5,
+    "n_repeats": 1,
+    "summary_ddof": 1,
+    "classification_datasets": [
+      "breast_cancer",
+      "car",
+      "iris",
+      "wine"
+    ],
+    "regression_datasets": [
+      "airfoil",
+      "boston",
+      "concrete",
+      "energy_cooling",
+      "wine_quality"
+    ],
+    "models": [
+      "opns",
+      "xgboost",
+      "lightgbm",
+      "catboost",
+      "histgb"
+    ],
+    "wine_quality_fold_local_imputation": true
+  }
+}
