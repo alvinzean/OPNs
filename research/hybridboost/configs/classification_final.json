@@ -1,0 +1,45 @@
+{
+  "__default__": {
+    "n_estimators": 120,
+    "learning_rate": 0.1,
+    "max_depth": 3,
+    "l2_leaf_reg": 1.0,
+    "poly_degree": 1,
+    "use_trig": false,
+    "logistic_lr": 0.1,
+    "logistic_max_iter": 500,
+    "feature_filter_ratio": 1.0,
+    "active_threshold": 1e-10,
+    "random_strength": 0.0,
+    "lr_decay_type": "constant",
+    "early_stopping_rounds": null,
+    "max_thresholds": 20,
+    "split_score_backend": "fast_exact",
+    "threshold_backend": "fast",
+    "threshold_sampling": "stride"
+  },
+  "breast_cancer": {
+    "n_estimators": 120,
+    "learning_rate": 0.1,
+    "max_depth": 3,
+    "poly_degree": 1
+  },
+  "car": {
+    "n_estimators": 120,
+    "learning_rate": 0.1,
+    "max_depth": 4,
+    "poly_degree": 2
+  },
+  "iris": {
+    "n_estimators": 120,
+    "learning_rate": 0.1,
+    "max_depth": 2,
+    "poly_degree": 2
+  },
+  "wine": {
+    "n_estimators": 120,
+    "learning_rate": 0.1,
+    "max_depth": 2,
+    "poly_degree": 2
+  }
+}
