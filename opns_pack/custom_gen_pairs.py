@@ -183,6 +183,14 @@ def data_convert(X, ori_feature, poly=1, tri=0, poly_only=False, linear_term=Tru
     return op.array(dx_model)
 
 
+
+def all_pair_repeat(feature):
+    # 【关键修改】：使用 permutations（排列）而不是 combinations（组合）
+    # 这样对于 9 个特征，会生成 9 * 8 = 72 个配对，既有 (A, B) 也有 (B, A)
+    pairings = list(itertools.permutations(feature, 2))
+    new_arr = [item for pairing in pairings for item in pairing]
+    return new_arr
+
 if __name__ == '__main__':
     import pandas as pd
 

@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "name": "single",
+      "features": [
+        "x"
+      ],
+      "result": []
+    },
+    {
+      "name": "two",
+      "features": [
+        "x",
+        "y"
+      ],
+      "result": [
+        "x",
+        "y",
+        "y",
+        "x"
+      ]
+    },
+    {
+      "name": "three",
+      "features": [
+        "x",
+        "y",
+        "z"
+      ],
+      "result": [
+        "x",
+        "y",
+        "x",
+        "z",
+        "y",
+        "x",
+        "y",
+        "z",
+        "z",
+        "x",
+        "z",
+        "y"
+      ]
+    },
+    {
+      "name": "four",
+      "features": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "result": [
+        "a",
+        "b",
+        "a",
+        "c",
+        "a",
+        "d",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "d",
+        "c",
+        "a",
+        "c",
+        "b",
+        "c",
+        "d",
+        "d",
+        "a",
+        "d",
+        "b",
+        "d",
+        "c"
+      ]
+    }
+  ],
+  "source": {
+    "frozen_custom_gen_pairs_sha256": "bbcccf7335b4e8df85b47346ff1753eac8d1e77911c02c493a8fcadad3ab62bc",
+    "all_pair_repeat_ast_sha256": "36b1de88b01d959c94be02afde163706d5c87721e3c737634e197bf854714945"
+  }
+}
