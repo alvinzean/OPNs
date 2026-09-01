@@ -314,7 +314,7 @@ if __name__ == "__main__":
     with pkg_resources.files(utils).joinpath("configs/test_data_params.json").open("r", encoding="utf-8") as f:
         test_args = json.load(f)
     
-    parser.add_argument('--dataset', type=str, default='default', choices=['abalone', 'bike', 'boston', 'concrete',
+    parser.add_argument('--dataset', type=str, default='default', choices=['abalone', 'bike', 'concrete',
                                                                       'diabetes', 'energy_cooling', 'energy_heating',
                                                                       'folds', 'wine', 'yacht', 'default'], 
                                                                       help='Name of dataset. You can add your personal dataset to choice list.')

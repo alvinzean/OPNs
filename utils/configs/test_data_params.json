@@ -11,12 +11,6 @@
         "tri": 1,
         "test_size": [0.2, 0.3]
     },
-    "boston": {
-        "alpha": 0.001,
-        "nth_power": 4,
-        "tri": 2,
-        "test_size": [0.2, 0.3]
-    },
     "concrete": {
         "alpha": 0.0001,
         "nth_power": 4,

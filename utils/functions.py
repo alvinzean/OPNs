@@ -15,7 +15,6 @@ def load_data(dataset_name: str, file_type: str='csv'):
     dataset_loaders = {
         'abalone': _load_abalone,
         'bike': _load_bike,
-        'boston': _load_boston,
         'concrete': _load_concrete,
         'diabetes': _load_diabetes,
         'energy_cooling': _load_cool,
@@ -51,9 +50,6 @@ def _load_bike(df:pd.DataFrame):
     X = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values.reshape(-1, 1)
     return feature_names, X, y
-
-def _load_boston(df:pd.DataFrame):
-    pass
 
 def _load_concrete(df:pd.DataFrame):
     feature_names = df.columns[:-1].tolist()
