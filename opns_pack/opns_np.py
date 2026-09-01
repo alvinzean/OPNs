@@ -514,6 +514,15 @@ def vstack(*matrices):
     :return  Concatenated matrix
     """
     matrices = _parse_input(matrices)
+
+    # Match numpy.vstack semantics: each one-dimensional input is one row.
+    matrices = [
+        matrix.reshape((1, -1))
+        if len(matrix.shape) == 1
+        else matrix
+        for matrix in matrices
+    ]
+
     _validate_shapes(matrices, axis=0)
     return array(np.vstack(matrices))
 

@@ -146,5 +146,67 @@ class TestOPNsSemantics(unittest.TestCase):
         )
 
 
+    def test_vstack_accepts_one_dimensional_vectors(self) -> None:
+        first = opns_np.array(
+            [
+                OPNs(1.0, 2.0),
+                OPNs(3.0, 4.0),
+            ]
+        )
+
+        second = opns_np.array(
+            [
+                OPNs(5.0, 6.0),
+                OPNs(7.0, 8.0),
+            ]
+        )
+
+        self.assertEqual(
+            first.shape,
+            (2,),
+        )
+
+        self.assertEqual(
+            second.shape,
+            (2,),
+        )
+
+        stacked = opns_np.vstack(
+            first,
+            second,
+        )
+
+        self.assertEqual(
+            stacked.shape,
+            (
+                2,
+                2,
+            ),
+        )
+
+        flattened = stacked.flatten()
+
+        expected = [
+            OPNs(1.0, 2.0),
+            OPNs(3.0, 4.0),
+            OPNs(5.0, 6.0),
+            OPNs(7.0, 8.0),
+        ]
+
+        self.assertEqual(
+            len(flattened),
+            len(expected),
+        )
+
+        for actual, target in zip(
+            flattened,
+            expected,
+        ):
+            self.assertEqual(
+                actual,
+                target,
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
