@@ -1,0 +1,60 @@
+{
+  "__default__": {
+    "lasso_alpha": 0.001,
+    "lasso_max_iter": 200,
+    "active_threshold": 1e-10,
+    "random_strength": 0.0,
+    "lr_decay_type": "constant",
+    "early_stopping_rounds": null,
+    "tree_feature_mode": "all",
+    "max_thresholds": 50,
+    "split_score_backend": "fast_exact",
+    "threshold_backend": "ordered_exact",
+    "threshold_sampling": "stride",
+    "prediction_backend": "spectral_batch"
+  },
+  "airfoil": {
+    "n_estimators": 900,
+    "learning_rate": 0.14,
+    "max_depth": 6,
+    "l2_leaf_reg": 1.1738739428277458,
+    "feature_filter_ratio": 0.6808254982560976,
+    "poly_degree": 5,
+    "use_trig": false,
+    "lasso_alpha": 0.001,
+    "threshold_backend": "ordered_exact"
+  },
+  "concrete": {
+    "n_estimators": 600,
+    "learning_rate": 0.1,
+    "max_depth": 6,
+    "l2_leaf_reg": 2.313803088557761,
+    "feature_filter_ratio": 0.8801060408008996,
+    "poly_degree": 3,
+    "use_trig": false,
+    "lasso_alpha": 0.0006158683644673,
+    "threshold_backend": "ordered_exact"
+  },
+  "energy_cooling": {
+    "n_estimators": 350,
+    "learning_rate": 0.3,
+    "max_depth": 5,
+    "l2_leaf_reg": 0.5004251141253482,
+    "feature_filter_ratio": 0.8558760945611015,
+    "poly_degree": 2,
+    "use_trig": false,
+    "lasso_alpha": 0.001,
+    "threshold_backend": "ordered_exact"
+  },
+  "wine_quality": {
+    "n_estimators": 550,
+    "learning_rate": 0.13,
+    "max_depth": 5,
+    "l2_leaf_reg": 0.3978706286552761,
+    "feature_filter_ratio": 0.7483192096930324,
+    "poly_degree": 1,
+    "use_trig": false,
+    "lasso_alpha": 0.0025344646814192,
+    "threshold_backend": "ordered_exact"
+  }
+}
