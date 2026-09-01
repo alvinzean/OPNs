@@ -1,167 +1,263 @@
-# OPNs: Algebraic Representation Learning Library
+# OPNs: OPNs-LR Research Code and Core Algebra Library
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-## Overview
+This repository originated as the implementation and reproduction codebase for OPNs-based linear regression (OPNs-LR). During the development of OPNs-LR, the project also established reusable software infrastructure for **Ordered Pair of Normalized Real Numbers (OPNs)**, including scalar algebra, mathematical functions, array and matrix operations, feature construction, preprocessing, and regression components. These shared OPNs components have since been reused and extended by other OPNs-based learning methods, including OPNs-HybridBoost.
 
-**OPNs (Ordered Pair of Normalized Real Numbers)** is a novel algebraic framework designed to explicitly model non-linear interactions and intrinsic data geometry. 
+> [!IMPORTANT]
+> ## OPNs-HybridBoost — Paper Code & Reproducibility
+>
+> **If you arrived here from the OPNs-HybridBoost manuscript, go directly to:**
+>
+> ### ➜ [OPNs-HybridBoost project and reproduction guide](./research/hybridboost/)
+>
+> **Paper:** *OPNs-HybridBoost: Algebraic Pairwise Interactions with Oblivious-Tree Refinement for Tabular Learning*
+>
+> Public reproduction entry points:
+>
+> - [Overall benchmark](./research/hybridboost/scripts/reproduce_overall.py)
+> - [Warm-start ablation](./research/hybridboost/scripts/reproduce_warm_start.py)
+> - [Active efficiency / Phase-I structure](./research/hybridboost/scripts/reproduce_active.py)
+>
+> The full protocol, datasets, frozen configurations, and output descriptions are documented in [`research/hybridboost/README.md`](./research/hybridboost/README.md).
 
-This library provides a **NumPy-based mathematical infrastructure** developed from scratch. It implements the core algebraic operations, matrix computations, and generalized metric spaces defined in the OPNs theory, powering machine learning algorithms without relying on high-level black-box APIs.
+## Repository Scope
 
----
+This repository was created during the development of OPNs-LR and has subsequently evolved into a shared research codebase for OPNs-based learning methods.
 
-## 📚 Representative Research & Publications
+The root project therefore has three closely related roles:
 
-This repository serves as the foundational library for the OPNs framework. It has powered the following research:
+1. **OPNs-LR implementation and reproduction** - the original primary purpose of the repository. The root `test.py`, `opns_module/linear_model`, `utils/configs`, and bundled regression datasets support this research workflow.
+2. **Shared OPNs software infrastructure** - the reusable algebraic and numerical components developed alongside OPNs-LR, primarily under `opns_pack` and `opns_module`.
+3. **Host repository for later OPNs research projects** - newer methods can reuse the shared OPNs implementation while keeping their paper-specific experimental material in dedicated subdirectories. OPNs-HybridBoost follows this structure under [`research/hybridboost/`](./research/hybridboost/).
 
-### 🌟 Primary Works (Official Implementation)
+The root-level workflow remains centered on OPNs-LR; paper-specific HybridBoost code and reproducibility material are intentionally isolated under `research/hybridboost/`.
 
-#### 1. [IEEE TAI 2025] Generalized Metric Space for Classification
-**Title:** K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers  
-**Authors:** Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, Lei Zhou* **Journal:** *IEEE Transactions on Artificial Intelligence (TAI)* **Status:** Accepted (May 2025)  
-🔗 **[Read Paper (IEEE Xplore)](https://doi.org/10.1109/TAI.2025.3566925)**
+## OPNs-LR — Primary Root Project
 
-#### 2. [IEEE TNNLS] Algebraic Framework for Regression
-**Title:** Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers  
-**Authors:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou* **Journal:** *IEEE Transactions on Neural Networks and Learning Systems (TNNLS)* **Status:** Minor Revision
-📄 **[Download Manuscript (PDF)](./OPNs-LR.pdf)**
+The root-level experiment workflow supports the OPNs linear-regression line of research associated with:
 
----
+**Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, Lei Zhou.**
+*Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers.*
 
-### 🤝 Collaborative Works & Applications
-*This library also supports the following studies where OPNs was applied to broader pattern recognition and regression tasks:*
+A manuscript copy is available at [`OPNs-LR.pdf`](./OPNs-LR.pdf).
 
- * **[Pattern Recognition]** Ying Tang, Jia Guo, Yi Zheng, Hao Feng, Xiaoqin Pan, Lei Zhou*.  
-    *"K-means clustering with generalized metrics using Ordered Pair of Normalized real numbers"*. (2026).  
-    🔗 **[DOI: 10.1016/j.patcog.2026.114236](https://doi.org/10.1016/j.patcog.2026.114236)**
+### Main OPNs-LR components
 
-* **[Applied Artificial Intelligence]** Meijun Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
-    *"Generalized-Metric-Based Pattern Recognition Using Ordered Pair of Normalized Real Numbers"*. (2025).  
-    🔗 **[DOI: 10.1080/08839514.2025.2590815](https://doi.org/10.1080/08839514.2025.2590815)**
+```text
+test.py
+opns_module/
+├── linear_model/
+└── preprocessing/
+opns_pack/
+utils/
+└── configs/
+    ├── config.json
+    ├── default_params.json
+    └── test_data_params.json
+dataset/
+requirements.txt
+```
 
-* **[J. Supercomputing]** Yonglin Huang, Yi Zheng, Xiaoqin Pan, Lei Zhou*.  
-    *"Stepwise regression algorithm based on the ordered pair of normalized real numbers framework"*. (2025).  
-    🔗 **[DOI: 10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)**
----
+`test.py` builds OPNs feature representations, applies OPNs-aware preprocessing, runs the OPNs Lasso / linear-regression workflow, and reports repeated-run regression metrics.
 
-## Features
-
-- **From Scratch Implementation:** Built strictly on Python and NumPy to ensure mathematical transparency.
-- **Custom Algebra:** Implements OPNs-specific addition, multiplication, and matrix operations via operator overloading.
-- **Generalized Metric:** Provides non-Euclidean distance calculations for measuring non-linear similarities.
-
-## Installation
-
-To install the OPNs Library, clone this repository:
+### Install the root OPNs-LR environment
 
 ```bash
 git clone https://github.com/alvinzean/OPNs.git
 cd OPNs
+python -m pip install -r requirements.txt
 ```
 
-## Usage
+`requirements.txt` is the root OPNs / OPNs-LR dependency set. OPNs-HybridBoost has additional optional baseline dependencies documented separately in [`research/hybridboost/README.md`](./research/hybridboost/README.md).
 
-- ### OPNs Class(opns.py)
-The **OPNs** class includes the definition of OPNs and their basic operations. It overrides the standard arithmetic operators to support custom rules.
+### Run a bundled regression dataset
 
-#### Basic OPNs Operations
+For example:
+
+```bash
+python test.py --dataset bike
+```
+
+Other bundled root datasets include `abalone`, `concrete`, `diabetes`, `energy_cooling`, `energy_heating`, `folds`, `wine`, and `yacht`.
+
+Dataset-specific experiment parameters are stored in:
+
+[`utils/configs/test_data_params.json`](./utils/configs/test_data_params.json)
+
+When no dataset-specific entry is available, the root experiment code falls back to:
+
+[`utils/configs/default_params.json`](./utils/configs/default_params.json)
+
+To enable the root memory-analysis path:
+
+```bash
+python test.py --dataset bike --memory
+```
+
+### Using a custom regression dataset
+
+The legacy/general root experiment entry point can also be extended to a custom dataset:
+
+1. place the dataset in `dataset/`;
+2. add an appropriate loader in `utils/functions.py` when the schema needs custom handling;
+3. add dataset-specific parameters to `utils/configs/test_data_params.json`, or use the default configuration;
+4. add the dataset name to the `--dataset` choices in `test.py`;
+5. run `python test.py --dataset <dataset_name>`.
+
+## Foundational OPNs Theory
+
+The mathematical framework used by OPNs-LR, OPNs-HybridBoost, and the other OPNs-based algorithms in this repository originates from the following work by **Lei Zhou**.
+
+1. **Lei Zhou.** “Ordered pair of normalized real numbers.” *Information Sciences*, 538 (2020), 290–313.
+   DOI: [10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
+
+   This paper introduces the OPNs framework and develops its basic algebraic operations, ordering structure, elementary functions, and related theoretical properties.
+
+2. **Lei Zhou.** “Smith Normal Forms and Matrix Theory over Ordered Pair of Normalized Real Numbers.” 2026. **Preprint**.
+   DOI: [10.20944/preprints202606.1206.v1](https://doi.org/10.20944/preprints202606.1206.v1)
+
+   This work further develops OPNs algebra and matrix theory, including the spectral two-channel representation, Smith normal forms, and related matrix results.
+
+## Core OPNs Package
+
+The reusable OPNs implementation developed as part of the OPNs-LR research codebase is primarily located in [`opns_pack/`](./opns_pack/). These components now serve as shared infrastructure for OPNs-LR and later OPNs-based algorithms.
+
+### Scalar operations
 
 ```python
-from opns import OPNs
+from opns_pack.opns import OPNs
 
 a = OPNs(3, 4)
 b = OPNs(-3, -4)
 
-print(a + b)  # OPNs addition
-print(a - b)  # OPNs subtraction
-print(a * b)  # OPNs multiplication
-print(a / b)  # OPNs division
-print(a ** 2) # OPNs exponentiation
-print(a == b) # OPNs comparison
-print(a < b)  # OPNs less than
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a ** 2)
 ```
 
-- ### OPNs Math Functions(opns_math.py)
-The opns_math module provides various mathematical functions for OPNs, similar to Python's math library.
-
-#### Example Usage
+### Mathematical functions
 
 ```python
-from opns import OPNs
-import opns_math
+from opns_pack.opns import OPNs
+from opns_pack import opns_math
 
 a = OPNs(3, 4)
 
-print(opns_math.log(a))     # OPNs logarithm
-print(opns_math.sin(a))     # OPNs sine
-print(opns_math.exp(a))     # OPNs exponential
+print(opns_math.log(a))
+print(opns_math.sin(a))
+print(opns_math.exp(a))
 ```
 
-## OPNs Mathematical Formulas
+### Array and matrix operations
 
-An OPNs is defined as $\alpha=(\mu_{\alpha}, \nu_{\alpha})$, with both $\mu_{\alpha}$ and $\nu_{\alpha}$ in the interval (0,1). In the actual operation, we removed the restriction of two terms in OPNs with values between 0 and 1. Here are some examples of mathematical formulas for OPNs:
+For NumPy-like OPNs operations, see:
 
-- ### Addition
+- [`opns_pack/opns_np.py`](./opns_pack/opns_np.py)
+- [`opns_pack/opns_matrix.py`](./opns_pack/opns_matrix.py)
 
-Given two OPNs, $\alpha=(\mu_{\alpha}, \nu_{\alpha})$ and $\beta=(\mu_{\beta}, \nu_{\beta})$, their addition is defined as:
+These shared components are used by the regression code and can also serve other OPNs-based learning algorithms.
 
-$$\alpha+\beta=(\mu_{\alpha}+\mu_{\beta}, \nu_{\alpha}+\nu_{\beta})$$
+## OPNs-HybridBoost
 
-- ### Multiplication
+OPNs-HybridBoost is maintained as a dedicated research package rather than being mixed into the root OPNs-LR workflow.
 
-The multiplication of two OPNs is defined as:
-$$\alpha\cdot\beta = (-\mu_{\alpha}\nu_{\beta}-\nu_{\alpha}\mu_{\beta},-\mu_{\alpha}\mu_{\beta}-\nu_{\alpha}\nu_{\beta})$$
+### ➜ [Open the OPNs-HybridBoost reproduction guide](./research/hybridboost/README.md)
 
-- ### Exponentiation
+The public package contains:
 
-The exponentiation of an OPNs $\alpha$ raised to the power of $n$ is defined as:
-$$\alpha^{n} = \left (\frac{(-1)^{n+1}}{2} \left ( \mu_{\alpha} + \nu_{\alpha} \right )^n + \frac{1}{2}\left ( \mu_{\alpha} - \nu_{\alpha} \right )^n, \frac{(-1)^{n+1}}{2} \left ( \mu_{\alpha} + \nu_{\alpha} \right )^n - \frac{1}{2}\left ( \mu_{\alpha} - \nu_{\alpha} \right )^n  \right )$$
+```text
+research/hybridboost/
+├── README.md
+├── ablations/
+├── configs/
+└── scripts/
+    ├── reproduce_overall.py
+    ├── reproduce_warm_start.py
+    └── reproduce_active.py
+```
 
-## Reference and Background
+The three entry points cover the final Overall benchmark, the Warm-start mechanism study, and the Active efficiency / Phase-I structure study.
 
-For detailed definitions and calculation rules of Ordered Pair of Normalized Real Numbers (OPNs), please refer to the foundational paper:
-﻿
-Zhou, Lei. *"Ordered pair of normalized real numbers."* Information Sciences 538 (2020): 290–313.
-[https://doi.org/10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
-﻿
-## Recent Updates
+## Repository Structure
 
-We have updated this repository to include the core implementation of the OPNs matrix class—`opns_np`—which provides Numpy-like functionality tailored for OPNs data structures and arithmetic. This module enables convenient construction, manipulation, and computation of OPNs matrices, and is designed to support further development in machine learning and numerical applications under the OPNs framework.
-﻿
-## Future Updates
+```text
+OPNs/
+├── opns_pack/                     # Shared OPNs scalar/math/array/matrix infrastructure
+├── opns_module/                   # OPNs regression and preprocessing modules
+├── test.py                        # Root OPNs-LR experiment entry point
+├── utils/                         # Root OPNs-LR data utilities and experiment configs
+├── dataset/                       # Bundled datasets
+├── opns_boost/                    # HybridBoost implementation and shared experiment utilities
+├── research/
+│   └── hybridboost/               # OPNs-HybridBoost public research/reproduction package
+├── tests/                         # Compatibility, protocol, and HybridBoost tests
+├── OPNs-LR.pdf                    # OPNs-LR manuscript copy
+├── requirements.txt               # Root OPNs / OPNs-LR dependencies
+└── README.md
+```
 
-We are actively working on:
+## OPNs-HybridBoost Dry-Run Checks
 
-* Integrating Automatic Differentiation (Autograd) for OPNs algebraic structures.
-* Developing OPNs-Neural Networks layers compatible with PyTorch.
-* Optimizing performance for large-scale matrix computations on GPUs.
+From the repository root, the formal HybridBoost protocols/configuration hashes can be checked without fitting models:
 
-## How to use it
+```bash
+python research/hybridboost/scripts/reproduce_overall.py --dry-run
+python research/hybridboost/scripts/reproduce_warm_start.py --dry-run
+python research/hybridboost/scripts/reproduce_active.py --dry-run
+python research/hybridboost/scripts/reproduce_active.py --experiment structure --dry-run
+```
 
-### Install dependency
+Full commands and protocol details are documented in the dedicated HybridBoost guide.
 
-Run `pip install  -r requirement.txt` to install the main libraries we needed.
+## Tests
 
-### Use test dataset
+Run the repository test suite with:
 
-We provide several datasets, including energy, wine, yacht, bike, etc.
+```bash
+python -m pytest -q
+```
 
-Each of them can be used like: `python test.py --dataset [dataset_name]`. 
+The current test surface includes shared OPNs compatibility, migrated dataset protocols, HybridBoost core behavior, frozen configuration contracts, ablation semantics, and public reproduction contracts.
 
-For example, we run `bike` dataset like this: `python test.py --dataset bike`.
+## Representative OPNs-Based Research
 
-Each dataset needed a corresponding parameters configuration. You can find it at `utils/test_data_params.json`.
+### OPNs-kNN
 
-### Use personal dataset
+**Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, Lei Zhou.**
+“K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers.”
+*IEEE Transactions on Artificial Intelligence*, 2025.
+DOI: [10.1109/TAI.2025.3566925](https://doi.org/10.1109/TAI.2025.3566925)
 
-**You can use your custom dataset**. 
+### OPNs K-means
 
-1. Add it to our dataset folder, which is named **dataset**. 
-2. Then, add the parameters about your dataset to a `json` file like `test_data_params.json`. If you don’t provide parameters, we will use a default configuration.
-3. Add your dataset_name to`parser.add_argument('--dataset', ...)` in  `test.py` .
-4. run `python test.py --dataset [YOUR dataset_name]`
-5. You can use additional parameter `--memory` to analyze memory usage.
+**Ying Tang, Jia Guo, Yi Zheng, Hao Feng, Xiaoqin Pan, Lei Zhou.**
+“K-means clustering with generalized metrics using Ordered Pair of Normalized real numbers.”
+*Pattern Recognition*, 2026.
+DOI: [10.1016/j.patcog.2026.114236](https://doi.org/10.1016/j.patcog.2026.114236)
 
-👍 You can follow our Github for the latest updates on this project. [OPNs](https://github.com/alvinzean/OPNs)
+### Other OPNs applications
 
+- **Meijun Chen, Yi Zheng, Xiaoqin Pan, Lei Zhou.** “Generalized-Metric-Based Pattern Recognition Using Ordered Pair of Normalized Real Numbers.” *Applied Artificial Intelligence*, 2025. DOI: [10.1080/08839514.2025.2590815](https://doi.org/10.1080/08839514.2025.2590815)
+- **Yonglin Huang, Yi Zheng, Xiaoqin Pan, Lei Zhou.** “Stepwise regression algorithm based on the ordered pair of normalized real numbers framework.” *The Journal of Supercomputing*, 2025. DOI: [10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)
+
+## License
+
+Unless otherwise noted, source code authored for this repository is licensed under the [MIT License](./LICENSE).
+
+The MIT License applies to the repository's own software source code and associated software documentation. Dataset files, manuscript PDFs (including `OPNs-LR.pdf`), and third-party materials are **not automatically covered by the MIT License** and remain subject to their respective original licenses, terms of use, or copyright conditions.
+
+Copyright is attributed collectively to **OPNs contributors**; individual contributors retain the rights associated with their respective contributions.
+
+## Citation
+
+This is a multi-project OPNs repository. For academic use, please cite the work corresponding to the component or method you use.
+
+- **Foundational OPNs theory:** Lei Zhou, "Ordered pair of normalized real numbers," *Information Sciences*, 538 (2020), 290-313. DOI: [10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
+- **OPNs matrix / spectral theory:** Lei Zhou, "Smith Normal Forms and Matrix Theory over Ordered Pair of Normalized Real Numbers," 2026, preprint. DOI: [10.20944/preprints202606.1206.v1](https://doi.org/10.20944/preprints202606.1206.v1)
+- **OPNs-LR:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, and Lei Zhou, *Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers*. See [`OPNs-LR.pdf`](./OPNs-LR.pdf).
+- **OPNs-HybridBoost:** Yi Zheng, Hao Feng, Xiaoqin Pan, and Lei Zhou, *OPNs-HybridBoost: Algebraic Pairwise Interactions with Oblivious-Tree Refinement for Tabular Learning*. See the [`research/hybridboost/`](./research/hybridboost/) project directory.
+
+Repository-level software citation metadata is provided in [`CITATION.cff`](./CITATION.cff). Because this repository supports multiple OPNs research projects, the repository-level citation does not replace the component-specific scholarly citations above.

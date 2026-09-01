@@ -1,0 +1,75 @@
+cff-version: 1.2.0
+message: >-
+  This repository originated as the OPNs-LR implementation and reproduction
+  codebase and later evolved into shared OPNs research software. If you use
+  this repository, please cite the scholarly work corresponding to the
+  component or method you use. The references below distinguish the
+  foundational OPNs theory, OPNs-LR, and OPNs-HybridBoost.
+title: "OPNs: OPNs-LR Research Code and Shared OPNs Software"
+type: software
+authors:
+  - name: "OPNs contributors"
+repository-code: "https://github.com/alvinzean/OPNs"
+url: "https://github.com/alvinzean/OPNs"
+license: MIT
+keywords:
+  - "Ordered Pair of Normalized Real Numbers"
+  - OPNs
+  - algebraic representation learning
+  - linear regression
+  - tabular learning
+  - gradient boosting
+
+references:
+  - type: article
+    title: "Ordered pair of normalized real numbers"
+    authors:
+      - family-names: "Zhou"
+        given-names: "Lei"
+    journal: "Information Sciences"
+    volume: 538
+    start: 290
+    end: 313
+    year: 2020
+    doi: "10.1016/j.ins.2020.05.036"
+
+  - type: unpublished
+    title: "Smith Normal Forms and Matrix Theory over Ordered Pair of Normalized Real Numbers"
+    authors:
+      - family-names: "Zhou"
+        given-names: "Lei"
+        orcid: "https://orcid.org/0000-0003-4659-8266"
+    year: 2026
+    doi: "10.20944/preprints202606.1206.v1"
+
+  - type: unpublished
+    title: "Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers"
+    authors:
+      - family-names: "Zheng"
+        given-names: "Yi"
+      - family-names: "Huang"
+        given-names: "Yonglin"
+      - family-names: "Pan"
+        given-names: "Xiaoqin"
+      - family-names: "Zhang"
+        given-names: "Hui"
+      - family-names: "Zhou"
+        given-names: "Lei"
+    year: 2026
+    url: "https://github.com/alvinzean/OPNs/blob/main/OPNs-LR.pdf"
+
+  - type: unpublished
+    title: "OPNs-HybridBoost: Algebraic Pairwise Interactions with Oblivious-Tree Refinement for Tabular Learning"
+    authors:
+      - family-names: "Zheng"
+        given-names: "Yi"
+        orcid: "https://orcid.org/0009-0009-8143-7813"
+      - family-names: "Feng"
+        given-names: "Hao"
+      - family-names: "Pan"
+        given-names: "Xiaoqin"
+        orcid: "https://orcid.org/0009-0000-2617-5165"
+      - family-names: "Zhou"
+        given-names: "Lei"
+        orcid: "https://orcid.org/0000-0003-4659-8266"
+    year: 2026
