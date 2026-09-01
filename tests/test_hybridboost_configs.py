@@ -39,13 +39,13 @@ REGRESSION_PATH = (
 
 
 CLASSIFICATION_SHA256 = (
-    "2f64a5e5e210da757e803124e2bd789ff"
-    "20adc8ae2652089b5c492dca23c8f79"
+    "feafdb52b8c2e3debf5c64a21d0c3f1"
+    "ee3c9f6635c755dfa1d547258bc4f7976"
 )
 
 REGRESSION_SHA256 = (
-    "5bbcc8b027ebce118e77ddf952d22d6ef"
-    "7d093c1dbc9bcdd298252a20e812dfe"
+    "6c54747483d23a8b98e90861e6c920bd"
+    "977d2e7fb38c04247f78486f456b0530"
 )
 
 

@@ -1,0 +1,2 @@
+# Keep frozen HybridBoost configuration bytes stable across platforms.
+research/hybridboost/configs/*.json text eol=lf

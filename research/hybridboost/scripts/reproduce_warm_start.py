@@ -109,8 +109,8 @@ DEFAULT_REGRESSION_CONFIG = (
 
 EXPECTED_CONFIG_HASHES = {
     "classification_final.json": (
-        "2f64a5e5e210da757e803124e2bd789ff"
-        "20adc8ae2652089b5c492dca23c8f79"
+        "feafdb52b8c2e3debf5c64a21d0c3f1"
+        "ee3c9f6635c755dfa1d547258bc4f7976"
     ),
     "regression_warm_start_final.json": (
         "3845f36adafb14396ad171758c38eafa3"

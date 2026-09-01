@@ -121,20 +121,20 @@ DEFAULT_REGRESSION_BASELINES = (
 
 EXPECTED_CONFIG_HASHES = {
     "classification_final.json": (
-        "2f64a5e5e210da757e803124e2bd789ff"
-        "20adc8ae2652089b5c492dca23c8f79"
+        "feafdb52b8c2e3debf5c64a21d0c3f1"
+        "ee3c9f6635c755dfa1d547258bc4f7976"
     ),
     "regression_final.json": (
-        "5bbcc8b027ebce118e77ddf952d22d6ef"
-        "7d093c1dbc9bcdd298252a20e812dfe"
+        "6c54747483d23a8b98e90861e6c920bd"
+        "977d2e7fb38c04247f78486f456b0530"
     ),
     "classification_baselines_final.json": (
-        "2c6e98e14e00c6f55bcc0e9ac0215ea"
-        "5a686744977e40250b2813f691bcaecc5"
+        "8b930dd4dd04df44886f8886e3f0cc22"
+        "2b71b0c39e37efce7eef340bc9f78890"
     ),
     "regression_baselines_final.json": (
-        "b06355721d278f60433588e95a3ce751"
-        "fb83312f168bec9da3293f6345906592"
+        "f9d2368b4e2d1494e38e62fda5e371e"
+        "acc3208c4f08db327feaf159e5f576e90"
     ),
 }
 
