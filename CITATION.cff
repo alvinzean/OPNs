@@ -45,25 +45,6 @@ references:
     doi: "10.20944/preprints202606.1206.v1"
 
   - type: article
-    title: "Stepwise regression algorithm based on the ordered pair of normalized real numbers framework"
-    authors:
-      - family-names: "Huang"
-        given-names: "Yonglin"
-      - family-names: "Zheng"
-        given-names: "Yi"
-        orcid: "https://orcid.org/0009-0009-8143-7813"
-      - family-names: "Pan"
-        given-names: "Xiaoqin"
-        orcid: "https://orcid.org/0009-0000-2617-5165"
-      - family-names: "Zhou"
-        given-names: "Lei"
-        orcid: "https://orcid.org/0000-0003-4659-8266"
-    journal: "The Journal of Supercomputing"
-    volume: 81
-    year: 2025
-    doi: "10.1007/s11227-025-07369-6"
-
-  - type: article
     title: "K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers"
     authors:
       - family-names: "Zheng"
@@ -109,3 +90,21 @@ references:
     volume: 180
     year: 2026
     doi: "10.1016/j.patcog.2026.114236"
+  - type: article
+    title: "Stepwise regression algorithm based on the ordered pair of normalized real numbers framework"
+    authors:
+      - family-names: "Huang"
+        given-names: "Yonglin"
+      - family-names: "Zheng"
+        given-names: "Yi"
+        orcid: "https://orcid.org/0009-0009-8143-7813"
+      - family-names: "Pan"
+        given-names: "Xiaoqin"
+        orcid: "https://orcid.org/0009-0000-2617-5165"
+      - family-names: "Zhou"
+        given-names: "Lei"
+        orcid: "https://orcid.org/0000-0003-4659-8266"
+    journal: "The Journal of Supercomputing"
+    volume: 81
+    year: 2025
+    doi: "10.1007/s11227-025-07369-6"
