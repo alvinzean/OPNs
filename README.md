@@ -253,11 +253,26 @@ Copyright is attributed collectively to **OPNs contributors**; individual contri
 
 ## Citation
 
-This is a multi-project OPNs repository. For academic use, please cite the work corresponding to the component or method you use.
+This is a multi-project OPNs research repository. For academic use, please cite the publication corresponding to the OPNs theory or method you use.
 
-- **Foundational OPNs theory:** Lei Zhou, "Ordered pair of normalized real numbers," *Information Sciences*, 538 (2020), 290-313. DOI: [10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
+### Foundational OPNs theory
+
+- **OPNs theory:** Lei Zhou, "Ordered pair of normalized real numbers," *Information Sciences*, 538 (2020), 290-313. DOI: [10.1016/j.ins.2020.05.036](https://doi.org/10.1016/j.ins.2020.05.036)
 - **OPNs matrix / spectral theory:** Lei Zhou, "Smith Normal Forms and Matrix Theory over Ordered Pair of Normalized Real Numbers," 2026, preprint. DOI: [10.20944/preprints202606.1206.v1](https://doi.org/10.20944/preprints202606.1206.v1)
-- **OPNs-LR:** Yi Zheng, Yonglin Huang, Xiaoqin Pan, Hui Zhang, and Lei Zhou, *Multiple Linear Regression Based on the Framework of Ordered Pair of Normalized Real Numbers*. See [`OPNs-LR.pdf`](./OPNs-LR.pdf).
-- **OPNs-HybridBoost:** Yi Zheng, Hao Feng, Xiaoqin Pan, and Lei Zhou, *OPNs-HybridBoost: Algebraic Pairwise Interactions with Oblivious-Tree Refinement for Tabular Learning*. See the [`research/hybridboost/`](./research/hybridboost/) project directory.
 
-Repository-level software citation metadata is provided in [`CITATION.cff`](./CITATION.cff). Because this repository supports multiple OPNs research projects, the repository-level citation does not replace the component-specific scholarly citations above.
+### Published OPNs learning methods
+
+- **OPNs-SR:** Yonglin Huang, Yi Zheng, Xiaoqin Pan, and Lei Zhou, "Stepwise regression algorithm based on the ordered pair of normalized real numbers framework," *The Journal of Supercomputing*, 81, Article 900, 2025. DOI: [10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)
+- **OPNs-kNN:** Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, and Lei Zhou, "K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers," *IEEE Transactions on Artificial Intelligence*, 6(11), 3132-3147, 2025. DOI: [10.1109/TAI.2025.3566925](https://doi.org/10.1109/TAI.2025.3566925)
+- **OPNs-K-means:** Ying Tang, Jia Guo, Yi Zheng, Hao Feng, Xiaoqin Pan, and Lei Zhou, "K-means clustering with generalized metrics using Ordered Pair of Normalized real numbers," *Pattern Recognition*, 180, Article 114236, 2026. DOI: [10.1016/j.patcog.2026.114236](https://doi.org/10.1016/j.patcog.2026.114236)
+
+### Repository research projects
+
+**OPNs-LR** and **OPNs-HybridBoost** are active research projects hosted in this repository. Their manuscript and reproducibility materials are provided as research artifacts, but they are not listed above as formally published scholarly references.
+
+- **OPNs-LR:** see [`OPNs-LR.pdf`](./OPNs-LR.pdf) and the root OPNs-LR implementation.
+- **OPNs-HybridBoost:** see the [`research/hybridboost/`](./research/hybridboost/) paper-code and reproducibility package.
+
+Formal publication citations for these projects will be added when stable publication records become available.
+
+Repository-level software citation metadata is provided in [`CITATION.cff`](./CITATION.cff). Because this repository supports multiple OPNs research projects, the repository-level software citation does not replace the method-specific scholarly citations above.

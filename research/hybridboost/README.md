@@ -301,15 +301,13 @@ Exploratory representation-ladder, spectral-route, algebra-attribution, patching
 
 ## Citation
 
-If you use OPNs-HybridBoost in academic work, please cite:
+A stable publication citation for **OPNs-HybridBoost** is not yet available. This directory provides the paper code and reproducibility materials for the active research project and should not be interpreted as a formally published scholarly reference.
 
-**Yi Zheng, Hao Feng, Xiaoqin Pan, and Lei Zhou.**
-*OPNs-HybridBoost: Algebraic Pairwise Interactions with Oblivious-Tree Refinement for Tabular Learning.*
+For academic use of the underlying OPNs framework, please cite the foundational OPNs references listed below. Representative published OPNs learning methods are listed in the repository-level [`README.md`](../../README.md).
 
-For the underlying OPNs algebraic framework, also cite the foundational OPNs work listed below. Repository-level software citation metadata is available in [`../../CITATION.cff`](../../CITATION.cff).
+Formal OPNs-HybridBoost publication metadata will be added when a stable publication record becomes available. Repository-level software citation metadata is available in [`../../CITATION.cff`](../../CITATION.cff).
 
 ## License
-
 The OPNs-HybridBoost source code in this repository follows the repository-level [MIT License](../../LICENSE), unless otherwise noted.
 
 Datasets, manuscript files, and third-party materials are not automatically covered by the MIT License and remain subject to their respective original licenses or copyright terms.
