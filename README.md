@@ -262,9 +262,9 @@ This is a multi-project OPNs research repository. For academic use, please cite 
 
 ### Published OPNs learning methods
 
-- **OPNs-SR:** Yonglin Huang, Yi Zheng, Xiaoqin Pan, and Lei Zhou, "Stepwise regression algorithm based on the ordered pair of normalized real numbers framework," *The Journal of Supercomputing*, 81, Article 900, 2025. DOI: [10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)
 - **OPNs-kNN:** Yi Zheng, Xuanbin Ding, Xiang Zhao, Xiaoqin Pan, and Lei Zhou, "K-Nearest Neighbor Algorithm Based on the Framework of Ordered Pair of Normalized Real Numbers," *IEEE Transactions on Artificial Intelligence*, 6(11), 3132-3147, 2025. DOI: [10.1109/TAI.2025.3566925](https://doi.org/10.1109/TAI.2025.3566925)
 - **OPNs-K-means:** Ying Tang, Jia Guo, Yi Zheng, Hao Feng, Xiaoqin Pan, and Lei Zhou, "K-means clustering with generalized metrics using Ordered Pair of Normalized real numbers," *Pattern Recognition*, 180, Article 114236, 2026. DOI: [10.1016/j.patcog.2026.114236](https://doi.org/10.1016/j.patcog.2026.114236)
+- **OPNs-SR:** Yonglin Huang, Yi Zheng, Xiaoqin Pan, and Lei Zhou, "Stepwise regression algorithm based on the ordered pair of normalized real numbers framework," *The Journal of Supercomputing*, 81, Article 900, 2025. DOI: [10.1007/s11227-025-07369-6](https://doi.org/10.1007/s11227-025-07369-6)
 
 ### Repository research projects
 
